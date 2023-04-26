@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Supplier;
+use App\Models\Stock;
+use App\Models\Customer;
 
 class User extends Authenticatable
 {
@@ -41,4 +44,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function supplier(){
+        return $this->hasOne(Supplier::class);
+    }
+
+    public function stocks(){
+        return $this->hasMany(Stock::class);
+    }
+
+    public function customer(){
+        return $this->hasOne(Customer::class);
+    }
 }
