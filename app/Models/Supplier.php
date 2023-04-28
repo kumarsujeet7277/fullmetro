@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Item;
+use App\Models\Stock;
 
 class Supplier extends Model
 {
@@ -29,4 +31,10 @@ class Supplier extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function items()
+    {
+        return $this->hasManyThrough(Item::class, Stock::class, 'user_id', 'id', 'user_id', 'item_id');
+    }
+
 }

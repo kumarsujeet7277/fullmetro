@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Stock;
 
 class Item extends Model
 {
@@ -18,6 +19,7 @@ class Item extends Model
 
     public static function validationRule(){
         return [
+        
              'name' =>[
                  'required',
                  'unique:items,name',

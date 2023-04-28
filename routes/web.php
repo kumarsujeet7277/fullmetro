@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home/items', function(){
+    $items = \App\Models\Item::with('stock')->get();
+    // dd($customer);
+    return view('item', ['items' => $items]);
+});
+
