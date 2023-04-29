@@ -10,17 +10,21 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                Transaction Details
+                                Tolal Transaction Details
                             </div>
                         </div>
                     </div>
                     <div class="panel-body">
                       
-                        <table class="table table-striped">
+                        <table class="table table-striped" style="border:1px solid blue;">
                             <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>User Id</th>
+                                    <th>User Name</th>
+                                    <th>Item ID</th>
                                     <th>Item Name</th>
+                                    <th>Item Price</th>
                                     <th>Quantity</th>
                                     <th>type</th>
                                     
@@ -28,19 +32,17 @@
                             </thead>
                             <tbody>
                                
-                               @foreach ($items as $item )
+                               @foreach ($stocks as $stock )
                      
-                                    <tr>
-                                        @if( $item->stock )
-                                            
-                                            <td>{{ $item->user->$id }}</td>
-                                        @endif
-                                       
-                                        <td>{{$item->name}}</td>
-                                        <td></td>
-                                        
-                                       
-                                        
+                                    <tr style="text-align:center;">
+                                        <td>{{$stock->id}}</td>
+                                        <td>{{$stock->user_id}}</td>
+                                        <td>{{$stock->user->name}}</td>
+                                        <td><b>{{$stock->item->id}}</b></td>
+                                        <td>{{$stock->item->name}}</td>
+                                        <td>{{$stock->item->price}}</td>
+                                        <td>{{$stock->quantity}}</td>
+                                        <td>{{$stock->type}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

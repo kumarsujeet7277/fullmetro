@@ -34,7 +34,7 @@ class Supplier extends Model
 
     public function items()
     {
-        return $this->hasManyThrough(Item::class, Stock::class, 'user_id', 'id', 'user_id', 'item_id');
+        return $this->hasManyThrough(Item::class, Stock::class, 'user_id', 'id', 'user_id', 'item_id')->where('type', 'sale');
     }
 
 }

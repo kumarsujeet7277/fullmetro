@@ -35,7 +35,12 @@ class Customer extends Model
 
     public function items()
     {
-        return $this->hasManyThrough(Item::class, Stock::class, 'user_id', 'id', 'user_id', 'item_id');
+        return $this->hasManyThrough(Item::class, Stock::class, 'user_id', 'id', 'user_id', 'item_id')->where('type', 'purchase');
+    }
+
+    public function stocks()
+    {
+        return $this->hasMany(Stock::class, 'user_id', 'user_id');
     }
     
 }
